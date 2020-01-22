@@ -75,6 +75,7 @@ DSK6713_AIC23_CodecHandle H_Codec;
 /* Sampling frequency in HZ. Must only be set to 8000, 16000, 24000
 32000, 44100 (CD standard), 48000 or 96000  */ 
 int sampling_freq = 8000;
+// Look up table for sin with size [SINE_TABLE_SIZE]
 float table[SINE_TABLE_SIZE];
 
 
@@ -98,7 +99,7 @@ Int32 R_Gain = 2100000000;
 /* Use this variable in your code to set the frequency of your sine wave 
    be carefull that you do not set it above the current nyquist frequency! */
 float sine_freq = 2000.0;
-int index=0;
+float index=0;
      
 /******************************* Function prototypes ********************************/
 void init_hardware(void);     
@@ -166,7 +167,7 @@ float sinegen(void)
 //	// temporary variable used to output values from function
 	float wave;
 //
-//	// represets the filter coeficients (square root of 2 and 1/square root of 2)
+//	// represents the filter coefficients (square root of 2 and 1/square root of 2)
 //	float a0 = 1.4142;
 //	float b0 = 0.7071;
 //
@@ -178,12 +179,17 @@ float sinegen(void)
 //	x[0] = 0; // reset input to zero (to create the impulse)
 //
 //	wave = y[0];
-    wave = table[index];
-    index+=(int)(SINE_TABLE_SIZE/(sampling_freq/sine_freq));
-
+    wave = table[(int)index];
+    // reads value from LUT
+    index+=(float)(SINE_TABLE_SIZE/(sampling_freq/sine_freq));
+    // increment index with respect to the target sine frequency
     if (index>SINE_TABLE_SIZE){
         index -= SINE_TABLE_SIZE;
     }
+    // handle wrap around case
+    // Alternatively, use code below to increase speed
+    //      index &= SINE_TABLE_SIZE-1
+    // not need to use if statement
     return(wave); 
     
 }

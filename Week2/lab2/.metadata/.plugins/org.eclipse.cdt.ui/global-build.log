@@ -694,3 +694,132 @@ Finished building target: "Sine_wave_generator.out"
  
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'Sine_wave_generator.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'Sine_wave_generator.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../sine.c"
+Invoking: C6000 Compiler
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="H:/RTDSPlab/lab2/Sine_wave_generator" --include_path="C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" --include_path="H:/RTDSPlab/lab2/Sine_wave_generator/Debug" --include_path="C:/ti/bios_5_42_02_10/packages/ti/bios/include" --include_path="C:/ti/bios_5_42_02_10/packages/ti/rtdx/include/c6000" --include_path="C:/ti/ccsv8/C6000/dsk6713/include" --include_path="C:/ti/ccsv8/C6000/csl/include" --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 --preproc_with_compile --preproc_dependency="sine.d_raw"  "../sine.c"
+Finished building: "../sine.c"
+ 
+Building target: "Sine_wave_generator.out"
+Invoking: C6000 Linker
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 -z --stack_size=0x800 -m"Sine_wave_generator.map" --heap_size=0x800 -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/lib" -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" -i"C:/ti/bios_5_42_02_10/packages/ti/rtdx/lib/c6000" -i"C:/ti/bios_5_42_02_10/packages/ti/bios/lib" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="Sine_wave_generator_linkInfo.xml" --rom_model -o "Sine_wave_generator.out" "./dsp_bios_cfg.obj" "./dsp_bios_cfg_c.obj" "./sine.obj" -l"./dsp_bios_cfg.cmd" -lrts6700.lib -l"C:/ti/ccsv8/C6000/csl/lib/csl6713.lib" -l"C:/ti/ccsv8/C6000/dsk6713/lib/dsk6713bslccsv4.lib" 
+<Linking>
+Finished building target: "Sine_wave_generator.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'Sine_wave_generator.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../sine.c"
+Invoking: C6000 Compiler
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="H:/RTDSPlab/lab2/Sine_wave_generator" --include_path="C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" --include_path="H:/RTDSPlab/lab2/Sine_wave_generator/Debug" --include_path="C:/ti/bios_5_42_02_10/packages/ti/bios/include" --include_path="C:/ti/bios_5_42_02_10/packages/ti/rtdx/include/c6000" --include_path="C:/ti/ccsv8/C6000/dsk6713/include" --include_path="C:/ti/ccsv8/C6000/csl/include" --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 --preproc_with_compile --preproc_dependency="sine.d_raw"  "../sine.c"
+Finished building: "../sine.c"
+ 
+Building target: "Sine_wave_generator.out"
+Invoking: C6000 Linker
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 -z --stack_size=0x800 -m"Sine_wave_generator.map" --heap_size=0x800 -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/lib" -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" -i"C:/ti/bios_5_42_02_10/packages/ti/rtdx/lib/c6000" -i"C:/ti/bios_5_42_02_10/packages/ti/bios/lib" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="Sine_wave_generator_linkInfo.xml" --rom_model -o "Sine_wave_generator.out" "./dsp_bios_cfg.obj" "./dsp_bios_cfg_c.obj" "./sine.obj" -l"./dsp_bios_cfg.cmd" -lrts6700.lib -l"C:/ti/ccsv8/C6000/csl/lib/csl6713.lib" -l"C:/ti/ccsv8/C6000/dsk6713/lib/dsk6713bslccsv4.lib" 
+<Linking>
+Finished building target: "Sine_wave_generator.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../sine.c"
+Invoking: C6000 Compiler
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="H:/RTDSPlab/lab2/Sine_wave_generator" --include_path="C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" --include_path="H:/RTDSPlab/lab2/Sine_wave_generator/Debug" --include_path="C:/ti/bios_5_42_02_10/packages/ti/bios/include" --include_path="C:/ti/bios_5_42_02_10/packages/ti/rtdx/include/c6000" --include_path="C:/ti/ccsv8/C6000/dsk6713/include" --include_path="C:/ti/ccsv8/C6000/csl/include" --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 --preproc_with_compile --preproc_dependency="sine.d_raw"  "../sine.c"
+ 
+>> Compilation failure
+subdir_rules.mk:40: recipe for target 'sine.obj' failed
+"../sine.c", line 181: error #31: expression must have integral type
+1 error detected in the compilation of "../sine.c".
+gmake: *** [sine.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../sine.c"
+Invoking: C6000 Compiler
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="H:/RTDSPlab/lab2/Sine_wave_generator" --include_path="C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" --include_path="H:/RTDSPlab/lab2/Sine_wave_generator/Debug" --include_path="C:/ti/bios_5_42_02_10/packages/ti/bios/include" --include_path="C:/ti/bios_5_42_02_10/packages/ti/rtdx/include/c6000" --include_path="C:/ti/ccsv8/C6000/dsk6713/include" --include_path="C:/ti/ccsv8/C6000/csl/include" --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 --preproc_with_compile --preproc_dependency="sine.d_raw"  "../sine.c"
+Finished building: "../sine.c"
+ 
+Building target: "Sine_wave_generator.out"
+Invoking: C6000 Linker
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 -z --stack_size=0x800 -m"Sine_wave_generator.map" --heap_size=0x800 -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/lib" -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" -i"C:/ti/bios_5_42_02_10/packages/ti/rtdx/lib/c6000" -i"C:/ti/bios_5_42_02_10/packages/ti/bios/lib" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="Sine_wave_generator_linkInfo.xml" --rom_model -o "Sine_wave_generator.out" "./dsp_bios_cfg.obj" "./dsp_bios_cfg_c.obj" "./sine.obj" -l"./dsp_bios_cfg.cmd" -lrts6700.lib -l"C:/ti/ccsv8/C6000/csl/lib/csl6713.lib" -l"C:/ti/ccsv8/C6000/dsk6713/lib/dsk6713bslccsv4.lib" 
+<Linking>
+Finished building target: "Sine_wave_generator.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'Sine_wave_generator.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../sine.c"
+Invoking: C6000 Compiler
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="H:/RTDSPlab/lab2/Sine_wave_generator" --include_path="C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" --include_path="H:/RTDSPlab/lab2/Sine_wave_generator/Debug" --include_path="C:/ti/bios_5_42_02_10/packages/ti/bios/include" --include_path="C:/ti/bios_5_42_02_10/packages/ti/rtdx/include/c6000" --include_path="C:/ti/ccsv8/C6000/dsk6713/include" --include_path="C:/ti/ccsv8/C6000/csl/include" --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 --preproc_with_compile --preproc_dependency="sine.d_raw"  "../sine.c"
+Finished building: "../sine.c"
+ 
+Building target: "Sine_wave_generator.out"
+Invoking: C6000 Linker
+"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6713 --define="_DEBUG" --define="CHIP_6713" --diag_wrap=off --display_error_number --diag_warning=225 -z --stack_size=0x800 -m"Sine_wave_generator.map" --heap_size=0x800 -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/lib" -i"C:/ti/ccsv8/tools/compiler/c6000_7.4.23/include" -i"C:/ti/bios_5_42_02_10/packages/ti/rtdx/lib/c6000" -i"C:/ti/bios_5_42_02_10/packages/ti/bios/lib" --reread_libs --display_error_number --warn_sections --diag_wrap=off --xml_link_info="Sine_wave_generator_linkInfo.xml" --rom_model -o "Sine_wave_generator.out" "./dsp_bios_cfg.obj" "./dsp_bios_cfg_c.obj" "./sine.obj" -l"./dsp_bios_cfg.cmd" -lrts6700.lib -l"C:/ti/ccsv8/C6000/csl/lib/csl6713.lib" -l"C:/ti/ccsv8/C6000/dsk6713/lib/dsk6713bslccsv4.lib" 
+<Linking>
+Finished building target: "Sine_wave_generator.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Sine_wave_generator ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'Sine_wave_generator.out' is up to date.
+
+**** Build Finished ****
