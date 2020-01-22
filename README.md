@@ -30,3 +30,13 @@ Real Time Digital Signal Processing
 8. Always build the code before executing.
 9. #define GRAVITY 10, DO NOT ";" AND "="
 10. TODO ?
+
+## Section 2 
+### Notes
+1.  #include DSO/BIOS config file & AIC config file => works for ADC & DAC convertors
+2.  #include file to help configure hardware
+
+### Answers to questions
+1. 8 samples per period, tested using variable watching
+2. The sampling frequency is set to 8khz and the number of samples per period is 8. 8k/8 = 1 k. The hardware(periphal) constaints the clock rate at 1 kHz.
+3. 32 bits

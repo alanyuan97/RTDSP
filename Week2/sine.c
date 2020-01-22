@@ -76,8 +76,9 @@ int sampling_freq = 8000;
 
 // Array of data used by sinegen to generate sine. These are the initial values.                        
 float y[3] = {0,0,0};
+// array of size 3
 float x[1] = {1}; // impulse to start filter
-
+// array of size 1
 float a0 = 1.4142; // coefficients for difference equation
 float b0 = 0.707;
 
