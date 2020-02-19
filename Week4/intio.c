@@ -64,15 +64,17 @@ DSK6713_AIC23_Config Config = { \
 
 int sample;
 float table[SINE_TABLE_SIZE];
-double input[filter_size];
+double input[filter_size]={0};
 int index=0;
 int offset=0;
+float output=0;
 // Codec handle:- a variable used to identify audio interface
 DSK6713_AIC23_CodecHandle H_Codec;
 
  /******************************* Function prototypes ********************************/
 void init_hardware(void);
 void init_HWI(void);
+void opt_cir();
 void InterupptSR();
 void test_cir();
 /********************************** Main routine ************************************/
@@ -152,7 +154,7 @@ void InteruptSR(){
 void test_cir(){
     input[offset] = mono_read_16Bit();
     int i;
-    float output = 0;
+    output = 0;
     for(i = 0;i<filter_size-offset;i++){
         output+=input[offset+i]*b[i];
     }
@@ -163,3 +165,34 @@ void test_cir(){
     if (offset==filter_size){offset=0;}
     mono_write_16Bit(output);
 }
+
+void opt_cir(){
+    input[offset] = mono_read_16Bit();
+    int i;
+    output = 0;
+    // First case offset less than half buffer size
+    if(offset<((filter_size-1)/2)){
+        for(i=0;i<offset;i++){
+                output+=(input[offset+i]+input[offset-i-1])*b[i];
+            }
+        for(i = offset;i<(filter_size-1)/2;i++){
+            output+=(input[offset-i-1+filter_size]+input[offset+i])*b[i];
+            }
+        output+=b[(filter_size-1)/2]*input[(filter_size-1)/2+offset];
+    }
+    // Second case larger than buffer size
+    else if(offset>(filter_size-1)/2){
+        for(i=0;i<filter_size - offset;i++){
+            output+=(input[offset+i]+input[offset-i-1])*b[i];
+        }
+        for(i = filter_size-offset;i<(filter_size-1)/2;i++){
+            output+=(input[offset-filter_size+i]+input[offset-1-i])*b[i];
+        }
+        output+=b[(filter_size-1)/2]*input[offset-(filter_size-1)/2 -1];
+    }
+    offset++;
+    if (offset==filter_size){offset=0;}
+    mono_write_16Bit(output);
+}
+
+
