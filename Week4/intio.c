@@ -41,6 +41,7 @@
 #define PI 3.141592653589793
 #define SINE_TABLE_SIZE 256
 #define filter_size 249
+#define N 249
 /******************************* Global declarations ********************************/
 
 /* Audio port configuration settings: these values set registers in the AIC23 audio
@@ -65,9 +66,16 @@ DSK6713_AIC23_Config Config = { \
 int sample;
 float table[SINE_TABLE_SIZE];
 double input[filter_size]={0};
+
+
+double* cir_ptr = &input[0]; // Head pointer to input array
+//double* cir_ptr_end = cir_ptr + filter_size ; // End pointer to input array
+double* coef_ptr = &b[0]; // Head pointer to coef array
+//double* coef_ptr_end = b +filter_size; // End pointer to coef array
+
 int index=0;
 int offset=0;
-float output=0;
+double output=0;
 // Codec handle:- a variable used to identify audio interface
 DSK6713_AIC23_CodecHandle H_Codec;
 
@@ -77,6 +85,7 @@ void init_HWI(void);
 void opt_cir();
 void InterupptSR();
 void test_cir();
+void ptr_cir();
 /********************************** Main routine ************************************/
 void main(){
 
@@ -194,5 +203,109 @@ void opt_cir(){
     if (offset==filter_size){offset=0;}
     mono_write_16Bit(output);
 }
+
+//void ptr_cir(){
+//    output = 0 ; // Output conv
+//    double * buf_val = cir_ptr + offset; // Pointing to newest slot
+//    *buf_val = mono_read_16Bit(); // Assign newest reading to slot
+//    for(;buf_val<cir_ptr+((filter_size-1)*sizeof(double));){
+//        output+= (*buf_val) * (*coef_ptr);
+//        buf_val +=sizeof(double);
+//        coef_ptr +=sizeof(double);
+//    }
+//    buf_val = cir_ptr;
+//
+//    for(;coef_ptr<coef_ptr+((filter_size-1)*sizeof(double));){
+//        output+= (*buf_val) * (*coef_ptr);
+//        buf_val +=sizeof(double);
+//        coef_ptr +=sizeof(double);
+//    }
+//    output+= (*buf_val) * (*coef_ptr); // compensate the first element
+//
+//    mono_write_16Bit(output);
+//
+//    if (++offset > filter_size){
+//        offset = 0;
+//    }
+//}
+//
+
+
+//void ptr_cir(){
+//    double* coeffptr = coef_ptr;
+//        double* coeffEndptr = coef_ptr + N; // points to the element AFTER the coefficient array
+//        double* sampleptr = cir_ptr + index; // point to oldest sample initially
+//        double* bufferEndptr = cir_ptr + N; // one after last element
+//
+//        int loopcnt = bufferEndptr - sampleptr; // how many iterations are needed for a single-step loop
+//        char modunroll = loopcnt % 4; // non-integral leftover of an unrolled loop
+//
+//        // accumulators
+//        double result = 0;
+//        double result2 = 0;
+//        double result3 = 0;
+//        double result4 = 0;
+//
+//        *sampleptr = mono_read_16Bit(); // read sample into buffer
+//
+//        // process samples until the end of the sample buffer is hit
+//        while(sampleptr < bufferEndptr-3)
+//        {
+//            result += (*coeffptr++) * (*sampleptr++);
+//            result2 += (*coeffptr++) * (*sampleptr++);
+//            result3 += (*coeffptr++) * (*sampleptr++);
+//            result4 += (*coeffptr++) * (*sampleptr++);
+//        }
+//
+//        // take care of non-integral leftover iterations
+//        if (modunroll>0) result += (*coeffptr++) * (*sampleptr++);
+//        if (modunroll>1) result2 += (*coeffptr++) * (*sampleptr++);
+//        if (modunroll>2) result3 += (*coeffptr++) * (*sampleptr++);
+//
+//        sampleptr = cir_ptr; // wrap pointer to beginning of the buffer
+//
+//        // pass the remainder of the buffer (amount of iterations = how many coefficients there are left to process)
+//        while (coeffptr < coeffEndptr-3)
+//        {
+//            result += (*coeffptr++) * (*sampleptr++);
+//            result2 += (*coeffptr++) * (*sampleptr++);
+//            result3 += (*coeffptr++) * (*sampleptr++);
+//            result4 += (*coeffptr++) * (*sampleptr++);
+//        }
+//
+//        // take care of non-integral leftover iterations
+//        if (modunroll==1) result += (*coeffptr++) * (*sampleptr++);
+//        if (modunroll==1 || modunroll==2) result2 += (*coeffptr++) * (*sampleptr++);
+//        if (modunroll==1 || modunroll==2 || modunroll==3) result3 += (*coeffptr++) * (*sampleptr++);
+//
+//        // sum the accumulators
+//        result = result + result2 + result3 + result4;
+//
+//        // advance index into circular buffer
+//        index = (index == 0) ? N-1 : index-1;
+//
+//        mono_write_16Bit(result);
+//}
+
+void ptr_cir(){
+    double *buf_val  = cir_ptr;
+    *buf_val++ = mono_read_16Bit();
+    if (buf_val>=cir_ptr+filter_size){
+        buf_val=cir_ptr;
+    }
+    int i =0;
+    double temp = 0;
+    double* iter_val=buf_val-1;
+    for (i=0;i<filter_size;i++){
+        temp += (*iter_val --)* b[i];
+        if(iter_val<cir_ptr) iter_val+= filter_size;
+    }
+    mono_write_16Bit(temp);
+//    if (++offset > filter_size){
+//           offset = 0;
+//       }
+
+}
+
 
 
