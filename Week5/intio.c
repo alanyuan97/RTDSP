@@ -34,14 +34,15 @@
 // math library (trig functions)
 #include <math.h>
 #include <fir_cof.txt>
+#include <group.txt>
 // Some functions to help with writing/reading the audio ports when using interrupts.
 #include <helper_functions_ISR.h>
 
 
 #define filter_size 249
 #define N 2
-#define Na 5
-#define Nb 5
+#define Na 11
+#define Nb 11
 /******************************* Global declarations ********************************/
 
 /* Audio port configuration settings: these values set registers in the AIC23 audio
@@ -69,6 +70,7 @@ double input[2]={0,0};
 double a_coefficient = -15;
 double last_output=0;
 double temp;
+double temp2;
 //double v[5]={0,0,0,0,0};
 double* x_ptr;
 double* this_ptr;
@@ -92,7 +94,7 @@ void InterupptSR();
 void test_cir();
 void ptr_cir();
 void processing(double* input);
-void base_irr();
+double base_irr();
 void ISR_iir();
 double irr_1();
 double irr_2();
@@ -160,19 +162,19 @@ void init_HWI(void)
 /******************** WRITE YOUR INTERRUPT SERVICE ROUTINE HERE***********************/
 void ISR_iir(){
     sample =mono_read_16Bit();
-    temp = irr_3();
+    temp2 = irr_3();
     //base_irr();
-    mono_write_16Bit(temp);
+    mono_write_16Bit(temp2);
 }
 
-void base_irr(){
+double base_irr(){
     input[0] =sample;
     temp= input[0]/b_coefficient[0];
     temp+= input[1]/b_coefficient[1];
     temp-=a_coefficient*last_output/17;
     last_output = temp;
     input[1]=input[0];
-    mono_write_16Bit(temp);
+
 }
 
 
@@ -181,11 +183,11 @@ double irr_1(){
       output=0;
       int i;
       for (i=Na-1;i>0;i--){
-          v[0]-= A[i]*v[i];
-          output+=B[i]*v[i];
+          v[0]-= A10[i]*v[i];
+          output+=B10[i]*v[i];
           v[i]=v[i-1];
       }
-      output+=B[0]*v[0];
+      output+=B10[0]*v[0];
       return output;
 }
 
@@ -245,12 +247,12 @@ double irr_1(){
 //
 double irr_3(){
     double output = 0;
-    output = v[0] + b[0]*sample;
-    int i=0;
-    for (i = 0;i<Na-1;i++){
-        v[i] = v[i+1]+B[i+1]*sample - A[i+1]*output;
+    output = v[0] + B10[0]*sample;
+    int i;
+    for (i = 1;i<Na-1;i++){
+        v[i-1] = v[i]+(B10[i]*sample) - (A10[i]*output);
     }
-    v[Na-1] = B[Na]*sample - A[Na]* output;
+    v[Na-2] = (B10[Na-1]*sample) - (A10[Na-1]* output);
     return output;
 }
 
